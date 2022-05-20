@@ -44,6 +44,7 @@ export const subscription = (<Data, Error>(useSWRNext: SWRHook) =>
     })
 
     useIsomorphicLayoutEffect(() => {
+      if (!key) return
       subscriptions.set(key, (subscriptions.get(key) || 0) + 1)
 
       const onData = (val?: Data) => swr.mutate(val, false)
